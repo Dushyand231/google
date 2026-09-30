@@ -41,3 +41,10 @@ example
 # generated native folders
 /ios
 /android
+
+# local secrets
+.env
+.env.local
+
+# v1 backup taken before the full rewrite
+.backup/

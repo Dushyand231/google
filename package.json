@@ -1,22 +1,31 @@
 {
-  "name": "offlineehr",
+  "name": "jeevacare",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "dependencies": {
+    "@dr.pogodin/react-native-fs": "^2.40.3",
     "@expo/ui": "~57.0.20",
+    "@supabase/supabase-js": "^2.117.2",
     "expo": "~57.0.25",
+    "expo-audio": "~57.0.5",
     "expo-constants": "~57.0.19",
+    "expo-dev-client": "~57.0.19",
     "expo-device": "~57.0.2",
     "expo-font": "~57.0.4",
     "expo-glass-effect": "~57.0.4",
     "expo-image": "~57.0.5",
     "expo-linking": "~57.0.11",
+    "expo-localization": "~57.0.2",
     "expo-router": "~57.0.23",
+    "expo-secure-store": "~57.0.4",
+    "expo-speech": "~57.0.3",
     "expo-splash-screen": "~57.0.9",
+    "expo-sqlite": "~57.0.3",
     "expo-status-bar": "~57.0.1",
     "expo-symbols": "~57.0.3",
     "expo-system-ui": "~57.0.4",
     "expo-web-browser": "~57.0.3",
+    "i18n-js": "^4.5.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.3",
@@ -24,11 +33,15 @@
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
+    "react-native-sherpa-onnx": "^0.4.4",
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.10.1"
   },
   "devDependencies": {
+    "@types/node": "^26.6.3",
     "@types/react": "~19.2.2",
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "~57.0.2",
     "typescript": "~6.0.3"
   },
   "scripts": {
@@ -37,7 +50,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "test": "node --import ./scripts/register-ts.mjs scripts/numwords.test.mjs && node --import ./scripts/register-ts.mjs scripts/numeral-corpus.test.mjs && node --import ./scripts/register-ts.mjs scripts/parse.test.mjs && node --import ./scripts/register-ts.mjs scripts/sync.test.mjs && node --import ./scripts/register-ts.mjs scripts/autosync.test.mjs && node --import ./scripts/register-ts.mjs scripts/server-sync.test.mjs && node --import ./scripts/register-ts.mjs scripts/contract.test.mjs && node --import ./scripts/register-ts.mjs scripts/auth.test.mjs",
+    "db:seed": "node server/seed.ts",
+    "server": "node server/index.ts",
+    "db:check": "node server/seed.ts --check",
+    "db:verify": "node scripts/verify-supabase.mjs",
+    "e2e:live": "node scripts/live-e2e.mjs"
   },
   "private": true
 }

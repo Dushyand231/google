@@ -1,23 +1,41 @@
 {
   "expo": {
-    "name": "OfflineEHR",
-    "slug": "OfflineEHR",
+    "name": "JeevaCare",
+    "slug": "jeevacare",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "offlineehr",
-    "userInterfaceStyle": "automatic",
+    "scheme": "jeevacare",
+    "userInterfaceStyle": "light",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "bundleIdentifier": "in.jeevacare.companion",
+      "icon": "./assets/expo.icon",
+      "infoPlist": {
+        "CFBundleLocalizations": [
+          "en",
+          "ta",
+          "hi",
+          "te",
+          "kn",
+          "ml"
+        ]
+      }
     },
     "android": {
+      "package": "in.jeevacare.companion",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
     },
     "web": {
       "output": "static",
@@ -25,18 +43,56 @@
     },
     "plugins": [
       "expo-router",
+      "expo-secure-store",
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": [
+              "en",
+              "ta",
+              "hi",
+              "te",
+              "kn",
+              "ml"
+            ],
+            "android": [
+              "en",
+              "ta",
+              "hi",
+              "te",
+              "kn",
+              "ml"
+            ]
+          }
+        }
+      ],
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#0B4F4A",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow JeevaCare to use the microphone so visits can be dictated by voice during a consultation."
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "75dd1a96-d665-44b6-8f31-10712612430f"
+      }
+    },
+    "owner": "aswin_008"
   }
 }
